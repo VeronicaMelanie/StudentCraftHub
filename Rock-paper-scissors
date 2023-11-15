@@ -1,0 +1,63 @@
+#include <iostream>
+#include <cstdlib> // for rand() function
+#include <ctime>   // for time() function
+
+using namespace std;
+
+//Piatra, hartie, foarfeca
+
+void alegereUser(int user) {
+    if (user == 1) {
+        cout << "Piatra" << endl;
+    }
+    else if (user == 2) {
+        cout << "Hartie" << endl;
+    }
+    else if (user == 3) {
+        cout << "Foarfeca" << endl;
+    }
+    else {
+        cout << "Alege alt numar!!! DE LA 1 LA 3!!!!" << endl;
+    }
+}
+
+int alegereComputer() {
+    return rand() % 3 + 1; // Generate a random number between 1 and 3
+}
+
+void castigator(int user, int computer) {
+    if (user == computer) {
+        cout << "Remiza" << endl;
+    }
+    else if ((user == 1 && computer == 3) || (user == 2 && computer == 1) || (user == 3 && computer == 2)) {
+        cout << "User 1 ai castigat, felicitari!!!" << endl;
+    }
+    else {
+        cout << "Computerul a castigat, felicitari!!!" << endl;
+    }
+}
+
+int main() {
+    srand(static_cast<unsigned>(time(0))); // Seed the random number generator
+
+    int user;
+    int computer;
+
+    cout << "Bine ati venit la jocul de 'piatra, hartie, foarfeca' impotriva computerului" << endl;
+    cout << "Alegeti-va elementul:" << endl;
+    cout << "1. Piatra." << endl;
+    cout << "2. Hartie." << endl;
+    cout << "3. Foarfeca." << endl;
+
+    cout << "Pick a number from 1-3 :D User: ";
+    cin >> user;
+    alegereUser(user);
+
+    computer = alegereComputer();
+    cout << "Computerul a ales ";
+    alegereUser(computer);
+
+    castigator(user, computer);
+
+    return 0;
+}
